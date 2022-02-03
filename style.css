@@ -22,7 +22,7 @@ h4 {
   background-image: url(img/moreclouds.jpg);
   background-size: 110%;
 }
-a,
+.degreeType,
 .btn-primary,
 #location-button {
   background-color: #52aaf1;
@@ -39,7 +39,7 @@ a,
   text-align: right;
   padding-bottom: 10px;
 }
-a {
+.degreeType {
   color: #eeeeee;
   text-decoration: none;
   font-size: 17px;
@@ -85,4 +85,14 @@ a {
 }
 .week-temp {
   padding-top: 10px;
+}
+.contact,
+#github {
+  display: block;
+  margin: 0 auto;
+  font-size: 11px;
+  text-align: center;
+}
+#github {
+  padding-top: 20px;
 }
