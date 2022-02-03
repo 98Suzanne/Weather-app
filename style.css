@@ -1,0 +1,88 @@
+h1 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding-top: 10px;
+}
+h1,
+h2 {
+  font-size: 50px;
+}
+h3,
+h4 {
+  font-size: 35px;
+}
+.container {
+  font-family: "Ubuntu", sans-serif;
+  width: 35%;
+  margin: 50px auto;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 35px 40px;
+  box-shadow: 5px 5px 5px grey;
+  background-image: url(img/moreclouds.jpg);
+  background-size: 110%;
+}
+a,
+.btn-primary,
+#location-button {
+  background-color: #52aaf1;
+  border-color: #52aaf1;
+}
+#city-input {
+  line-height: 30px;
+}
+.location {
+  color: white;
+}
+#temperature-type {
+  font-size: 25px;
+  text-align: right;
+  padding-bottom: 10px;
+}
+a {
+  color: #eeeeee;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 6px 6px 6px 6px;
+  border-radius: 3px;
+  display: inline-flex;
+}
+.rightcol1,
+.rightcol2,
+.measure {
+  text-align: right;
+}
+.rightcol2 {
+  margin-top: 85px;
+}
+.main-img {
+  width: 45%;
+  padding: 15px 0px;
+}
+#current-date,
+#weather,
+.measure,
+.week-temp {
+  font-size: 20px;
+}
+.card {
+  background-color: rgba(245, 245, 245, 0);
+  border: 0;
+  align-items: center;
+}
+.card-body {
+  font-size: 25px;
+  border: 0;
+  padding: 8px 5px;
+}
+.week-weather {
+  padding: 0%;
+}
+.week-img {
+  width: 70%;
+  padding: 12px 0px;
+}
+.week-temp {
+  padding-top: 10px;
+}
