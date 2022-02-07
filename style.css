@@ -19,14 +19,14 @@ h4 {
   border-radius: 10px;
   padding: 35px 40px;
   box-shadow: 5px 5px 5px grey;
-  background-image: url(img/moreclouds.jpg);
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
   background-size: 110%;
 }
 .degreeType,
 .btn-primary,
 #location-button {
-  background-color: #52aaf1;
-  border-color: #52aaf1;
+  background-color: #6acbf8;
+  border-color: #6acbf8;
 }
 #city-input {
   line-height: 30px;
@@ -54,7 +54,7 @@ h4 {
   text-align: right;
 }
 .rightcol2 {
-  margin-top: 85px;
+  margin-top: 15%;
 }
 .main-img {
   width: 45%;
