@@ -1,7 +1,6 @@
 h1 {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  padding-top: 10px;
 }
 h1,
 h2 {
@@ -22,7 +21,10 @@ h4 {
   background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
   background-size: 110%;
 }
-.degreeType,
+#city-input {
+  border-color: #ffffff;
+}
+.degree-type,
 .btn-primary,
 #location-button {
   background-color: #6acbf8;
@@ -39,7 +41,7 @@ h4 {
   text-align: right;
   padding-bottom: 10px;
 }
-.degreeType {
+.degree-type {
   color: #eeeeee;
   text-decoration: none;
   font-size: 17px;
@@ -56,7 +58,7 @@ h4 {
 .rightcol2 {
   margin-top: 15%;
 }
-.main-img {
+#icon {
   width: 45%;
   padding: 15px 0px;
 }

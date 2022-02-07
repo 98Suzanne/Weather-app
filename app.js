@@ -31,6 +31,9 @@ let currentMonth = months[now.getMonth()];
 let currentHour = now.getHours();
 let currentMinute = now.getMinutes();
 
+if (currentHour < 10) {
+  currentHour = `0${currentHour}`;
+}
 if (currentMinute < 10) {
   currentMinute = `0${currentMinute}`;
 }
@@ -43,12 +46,13 @@ today.innerHTML = `${currentDay}, ${currentMonth} ${currentDate}, ${currentHour}
 function displayWeather(response) {
   let city = document.querySelector("h1");
   let weather = document.querySelector("#weather");
-  let currentTemp = document.querySelector("#tempDisplay");
+  let currentTemp = document.querySelector("#temp-display");
   let minTemp = document.querySelector("#min");
   let maxTemp = document.querySelector("#max");
   let clouds = document.querySelector("#clouds");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
+  let icon = document.querySelector("#icon");
 
   city.innerHTML = response.data.name;
   weather.innerHTML = response.data.weather[0].main;
@@ -58,6 +62,11 @@ function displayWeather(response) {
   clouds.innerHTML = `Cloudiness: ${response.data.clouds.all}%`;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
 
 function searchCity(city) {
@@ -100,7 +109,7 @@ button.addEventListener("click", getCurrentPosition);
 function convertToF(event) {
   event.preventDefault();
   let unit = document.querySelector("#temp-unit");
-  let temperatureElement = document.querySelector("#tempDisplay");
+  let temperatureElement = document.querySelector("#temp-display");
   let temperature = temperatureElement.innerHTML;
   temperature = Number(temperature);
   temperatureElement.innerHTML = Math.round((temperature * 9) / 5 + 32);
@@ -119,7 +128,7 @@ function convertToF(event) {
 function convertToC(event) {
   event.preventDefault();
   let unit = document.querySelector("#temp-unit");
-  let temperatureElement = document.querySelector("#tempDisplay");
+  let temperatureElement = document.querySelector("#temp-display");
   temperatureElement.innerHTML = 7;
   unit.innerHTML = "°C";
 
