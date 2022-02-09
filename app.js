@@ -54,6 +54,10 @@ function displayWeather(response) {
   let wind = document.querySelector("#wind");
   let icon = document.querySelector("#icon");
 
+  celsiusTemperature = response.data.main.temp;
+  celsiusTemperatureMin = response.data.main.temp_min;
+  celsiusTemperatureMax = response.data.main.temp_max;
+
   city.innerHTML = response.data.name;
   weather.innerHTML = response.data.weather[0].main;
   currentTemp.innerHTML = Math.round(response.data.main.temp);
@@ -62,10 +66,7 @@ function displayWeather(response) {
   clouds.innerHTML = `Cloudiness: ${response.data.clouds.all}%`;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
-  icon.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
+  icon.setAttribute("src", `img/${response.data.weather[0].icon}.png`);
   icon.setAttribute("alt", response.data.weather[0].description);
 }
 
@@ -109,34 +110,36 @@ button.addEventListener("click", getCurrentPosition);
 function convertToF(event) {
   event.preventDefault();
   let unit = document.querySelector("#temp-unit");
-  let temperatureElement = document.querySelector("#temp-display");
-  let temperature = temperatureElement.innerHTML;
-  temperature = Number(temperature);
-  temperatureElement.innerHTML = Math.round((temperature * 9) / 5 + 32);
   unit.innerHTML = "°F";
+
+  let temperatureElement = document.querySelector("#temp-display");
+  let farenheit = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(farenheit);
 
   let minElement = document.querySelector("#min");
   let maxElement = document.querySelector("#max");
-  let min = minElement.innerHTML;
-  let max = maxElement.innerHTML;
-  min = Number(min);
-  max = Number(max);
-  minElement.innerHTML = Math.round((min * 9) / 5 + 32);
-  maxElement.innerHTML = Math.round((max * 9) / 5 + 32);
+  let farenheitMin = (celsiusTemperatureMin * 9) / 5 + 32;
+  let farenheitMax = (celsiusTemperatureMax * 9) / 5 + 32;
+  minElement.innerHTML = Math.round(farenheitMin);
+  maxElement.innerHTML = Math.round(farenheitMax);
 }
 
 function convertToC(event) {
   event.preventDefault();
   let unit = document.querySelector("#temp-unit");
-  let temperatureElement = document.querySelector("#temp-display");
-  temperatureElement.innerHTML = 7;
   unit.innerHTML = "°C";
 
-  let min = document.querySelector("#min");
-  let max = document.querySelector("#max");
-  min.innerHTML = 3;
-  max.innerHTML = 10;
+  let temperatureElement = document.querySelector("#temp-display");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+
+  let minElement = document.querySelector("#min");
+  let maxElement = document.querySelector("#max");
+  minElement.innerHTML = Math.round(celsiusTemperatureMin);
+  maxElement.innerHTML = Math.round(celsiusTemperatureMax);
 }
+
+let celsiusTemperature = null;
+let farenheitTemperature = null;
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToF);
