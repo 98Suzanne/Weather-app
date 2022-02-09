@@ -57,6 +57,7 @@ function displayWeather(response) {
   celsiusTemperature = response.data.main.temp;
   celsiusTemperatureMin = response.data.main.temp_min;
   celsiusTemperatureMax = response.data.main.temp_max;
+  windSpeed = response.data.wind.speed;
 
   city.innerHTML = response.data.name;
   weather.innerHTML = response.data.weather[0].main;
@@ -122,6 +123,10 @@ function convertToF(event) {
   let farenheitMax = (celsiusTemperatureMax * 9) / 5 + 32;
   minElement.innerHTML = Math.round(farenheitMin);
   maxElement.innerHTML = Math.round(farenheitMax);
+
+  let windElement = document.querySelector("#wind");
+  let wind = windSpeed / 1.609344;
+  windElement.innerHTML = `Wind: ${Math.round(wind)} mph`;
 }
 
 function convertToC(event) {
@@ -136,10 +141,14 @@ function convertToC(event) {
   let maxElement = document.querySelector("#max");
   minElement.innerHTML = Math.round(celsiusTemperatureMin);
   maxElement.innerHTML = Math.round(celsiusTemperatureMax);
+
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = `Wind: ${Math.round(windSpeed)} km/h`;
 }
 
 let celsiusTemperature = null;
 let farenheitTemperature = null;
+let windSpeed = null;
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToF);
