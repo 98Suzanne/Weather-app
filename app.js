@@ -41,12 +41,40 @@ if (currentMinute < 10) {
 let today = document.querySelector("#current-date");
 today.innerHTML = `${currentDay}, ${currentMonth} ${currentDate}, ${currentHour}:${currentMinute}`;
 
+// Forecast
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col" id="forecast">
+          <div class="card">
+            <div class="card-body"><strong>${day}</strong></div>
+            <img 
+              class="week-img"
+              src="img/02d.png"
+            />
+            <div class="week-temp"> 
+              <span id="max">8°</span> /
+              <span id="min">3°</span>
+            </div>
+          </div>
+        </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 // Display weather in current city + log coordinates
 
 function getForecast(coordinates) {
-  let units = "metric";
+  console.log(coordinates);
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -80,17 +108,16 @@ function displayWeather(response) {
   getForecast(response.data.coord);
 }
 
-function searchCity(city) {
-  let units = "metric";
+function search(city) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(displayWeather);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
 }
 
-function search(event) {
+function handleSubmit(event) {
   event.preventDefault();
-  let city = document.querySelector("#city-input").value;
-  searchCity(city);
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
 }
 
 let form = document.querySelector("#search");
@@ -164,31 +191,4 @@ fahrenheitLink.addEventListener("click", convertToF);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToC);
 
-// Forecast
-
-function displayForecast(response) {
-  console.log(response.data);
-  let forecastElement = document.querySelector("#forecast");
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col" id="forecast">
-          <div class="card">
-            <div class="card-body"><strong>${day}</strong></div>
-            <img 
-              class="week-img"
-              src="img/02d.png"
-            />
-            <div class="week-temp"> 
-              <span id="max">8°</span> /
-              <span id="min">3°</span>
-            </div>
-          </div>
-        </div>`;
-  });
-
-  forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML;
-}
+search("Amsterdam");
