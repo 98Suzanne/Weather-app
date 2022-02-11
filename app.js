@@ -106,7 +106,6 @@ let button = document.querySelector("#location-button");
 button.addEventListener("click", getCurrentPosition);
 
 // Celsius vs Farenheit
-// Not yet adjusted for current/entered location!
 
 function convertToF(event) {
   event.preventDefault();
@@ -155,3 +154,33 @@ fahrenheitLink.addEventListener("click", convertToF);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToC);
+
+// Forecast
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col" id="forecast">
+          <div class="card">
+            <div class="card-body"><strong>${day}</strong></div>
+            <img 
+              class="week-img"
+              src="img/02d.png"
+            />
+            <div class="week-temp"> 
+              <span id="max">8°</span> /
+              <span id="min">3°</span>
+            </div>
+          </div>
+        </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
