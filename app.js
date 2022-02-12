@@ -94,6 +94,9 @@ function displayWeather(response) {
   celsiusTemperatureMax = response.data.main.temp_max;
   windSpeed = response.data.wind.speed;
 
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+
   city.innerHTML = response.data.name;
   weather.innerHTML = response.data.weather[0].main;
   currentTemp.innerHTML = Math.round(response.data.main.temp);
@@ -111,7 +114,7 @@ function displayWeather(response) {
 function search(city) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayTemperature);
+  axios.get(apiUrl).then(displayWeather);
 }
 
 function handleSubmit(event) {
@@ -121,7 +124,7 @@ function handleSubmit(event) {
 }
 
 let form = document.querySelector("#search");
-form.addEventListener("submit", search);
+form.addEventListener("submit", handleSubmit);
 
 // Weather in current location
 
@@ -145,6 +148,9 @@ button.addEventListener("click", getCurrentPosition);
 
 function convertToF(event) {
   event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+
   let unit = document.querySelector("#temp-unit");
   unit.innerHTML = "°F";
 
@@ -166,6 +172,9 @@ function convertToF(event) {
 
 function convertToC(event) {
   event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+
   let unit = document.querySelector("#temp-unit");
   unit.innerHTML = "°C";
 

@@ -13,17 +13,28 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
     crossorigin="anonymous"
   />
-  <script src="https://kit.fontawesome.com/7a014ee7e7.js" crossorigin="anonymous"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <script
+    src="https://kit.fontawesome.com/7a014ee7e7.js"
+    crossorigin="anonymous"
+  ></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="style.css" />
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-8 ">
+        <div class="col-8">
           <form id="search">
-            <input type="text" placeholder="Enter a city" autocomplete="off" id="city-input" />
+            <input
+              type="text"
+              placeholder="Enter a city"
+              autocomplete="off"
+              id="city-input"
+            />
             <button type="submit" class="btn btn-primary">Submit</button>
             <button id="location-button">
               <i class="fas fa-map-marker-alt location"></i>
@@ -31,11 +42,11 @@
           </form>
         </div>
         <div class="col-4" id="temperature-type">
-          <a href="#" class="degree-type" id="celsius-link">°C </a>   
+          <a href="#" class="degree-type" id="celsius-link">°C </a>
           <a href="#" class="degree-type" id="fahrenheit-link">°F </a>
+        </div>
       </div>
-    </div>
-    <hr />
+      <hr />
       <div class="row">
         <div class="col leftcol1" id="city-name">
           <h1>Amsterdam</h1>
@@ -57,7 +68,7 @@
       <div class="row">
         <div class="col leftcol2">
           <div id="weather">Partly cloudy</div>
-          <img src="img/01d.png" id="icon">
+          <img src="img/01d.png" id="icon" />
         </div>
         <div class="col rightcol2">
           <div class="measure" id="clouds">Cloudiness: 37%</div>
@@ -66,88 +77,15 @@
         </div>
       </div>
       <hr />
-      <div class="row">
-        <div class="col" id="forecast">
-          <div class="card">
-            <div class="card-body"><strong>Tue</strong></div>
-            <img 
-              class="week-img"
-              src="img/02d.png"
-            />
-            <div class="week-temp"> 
-              <span id="max">8°</span> /
-              <span id="min">3°</span>
-            </div>
-          </div>
-        </div>
-        <div class="col" id="forecast">
-          <div class="card">
-            <div class="card-body"><strong>Wed</strong></div>
-            <img
-              class="week-img"
-              src="img/03d.png"
-            />
-            <div class="week-temp"> 
-              <span id="max">8°</span> /
-              <span id="min">3°</span>
-            </div>
-          </div>
-        </div>
-        <div class="col" id="forecast">
-          <div class="card">
-            <div class="card-body"><strong>Thu</strong></div>
-            <img
-              class="week-img"
-              src="img/04d.png"
-            />
-            <div class="week-temp"> 
-              <span id="max">8°</span> /
-              <span id="min">3°</span>
-            </div>
-          </div>
-        </div>
-        <div class="col" id="forecast">
-          <div class="card">
-            <div class="card-body"><strong>Fri</strong></div>
-            <img
-              class="week-img"
-              src="img/10d.png"
-            />
-            <div class="week-temp"> 
-              <span id="max">8°</span> /
-              <span id="min">3°</span>
-            </div>
-          </div>
-        </div>
-        <div class="col" id="forecast">
-          <div class="card">
-            <div class="card-body"><strong>Sat</strong></div>
-            <img 
-              class="week-img"
-              src="img/13d.png"
-            />
-            <div class="week-temp"> 
-              <span id="max">8°</span> /
-              <span id="min">3°</span>
-            </div>
-          </div>
-        </div>
-        <div class="col" id="forecast">
-          <div class="card">
-            <div class="card-body"><strong>Sun</strong></div>
-            <img
-              class="week-img"
-              src="img/50d.png"
-            />
-            <div class="week-temp"> 
-              <span id="max">8°</span> /
-              <span id="min">3°</span>
-            </div>
-          </div>
-        </div>
+      <div class="weather-forecast" id="forecast"></div>
     </div>
-    <a href="https://github.com/98Suzanne/Weather-app" id="github" target="blank">Open source code</a>
-    <div class="contact"> by Suzanne van Dinten</div>
+    <a
+      href="https://github.com/98Suzanne/Weather-app"
+      id="github"
+      target="blank"
+      >Open source code</a
+    >
+    <div class="contact">by Suzanne van Dinten</div>
     <script src="app.js"></script>
   </body>
 </html>
