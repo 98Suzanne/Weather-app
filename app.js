@@ -43,26 +43,35 @@ today.innerHTML = `${currentDay}, ${currentMonth} ${currentDate}, ${currentHour}
 
 // Forecast
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col" id="forecast">
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML += `<div class="col" id="forecast">
           <div class="card">
-            <div class="card-body"><strong>${day}</strong></div>
+            <div class="card-body"><strong>${formatDay(
+              forecastDay.dt
+            )}</strong></div>
             <img 
               class="week-img"
-              src="img/02d.png"
+              <img src="img/${forecastDay.weather[0].icon}.png"
             />
             <div class="week-temp"> 
-              <span id="max">8°</span> /
-              <span id="min">3°</span>
+              <span id="max">${Math.round(forecastDay.temp.max)}°</span> /
+              <span id="min">${Math.round(forecastDay.temp.min)}°</span>
             </div>
           </div>
         </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -94,6 +103,8 @@ function displayWeather(response) {
   celsiusTemperatureMax = response.data.main.temp_max;
   windSpeed = response.data.wind.speed;
 
+  let unit = document.querySelector("#temp-unit");
+  unit.innerHTML = "°C";
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
 

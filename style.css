@@ -13,7 +13,7 @@ h4 {
 .container {
   font-family: "Ubuntu", sans-serif;
   width: 35%;
-  margin: 50px auto;
+  margin: 50px auto 10px auto;
   border: 1px solid grey;
   border-radius: 10px;
   padding: 35px 40px;
